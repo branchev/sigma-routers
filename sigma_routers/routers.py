@@ -1,14 +1,14 @@
-import os
 import requests
 
-WAREHOUSE_URL = os.getenv('WAREHOUSE_URL')
-print(WAREHOUSE_URL)
 
 class SigmaEndpoints():
 
+    def __init__(self, warehouse_url) -> None:
+        self.warehouse_url = warehouse_url
+
     def login(self, email: str, password: str):
         return requests.post(
-            f'{WAREHOUSE_URL}/api-token-auth/',
+            f'{self.warehouse_url}/api-token-auth/',
             data={'email': email, 'password': password}
         )
 
@@ -17,7 +17,7 @@ class SigmaEndpoints():
         GET all items
         """
         return requests.get(
-            f'{WAREHOUSE_URL}/api/warehouse/items/',
+            f'{self.warehouse_url}/api/warehouse/items/',
             headers={'Authorization': f'Token {jwt_token}'}
         )
 
@@ -26,7 +26,7 @@ class SigmaEndpoints():
         POST buy item
         """
         return requests.post(
-            f'{WAREHOUSE_URL}/api/warehouse/items/',
+            f'{self.warehouse_url}/api/warehouse/items/',
             data={'item_id': item_id, 'quantity': quantity},
             headers={'Authorization': f'Token {jwt_token}'}
         )
