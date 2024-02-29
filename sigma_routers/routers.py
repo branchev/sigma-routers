@@ -26,7 +26,7 @@ class SigmaEndpoints():
         POST buy item
         """
         return requests.post(
-            f'{self.warehouse_url}/api/warehouse/items/',
+            f'{self.warehouse_url}/api/buy-item/',
             data={'item_id': item_id, 'quantity': quantity},
             headers={'Authorization': f'Token {jwt_token}'}
         )

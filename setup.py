@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='sigma_routers',
-    version='1.0.0',
+    version='1.0.1',
     author='Boris Ranchev',
     author_email='ranchev.boris@abv.com',
     description='Endpoints Access Router Package',
